@@ -46,7 +46,7 @@ $(function() {
       })
       // check if feed container has entries in it by checking for length
       it('has at least one .entry element in the .feed container', function(){
-        expect(document.getElementsByClassName('entry').length).not.toBe(0);
+        expect(document.querySelectorAll('.feed .entry').length).not.toBe(0);
       });
 
     });
@@ -70,10 +70,10 @@ $(function() {
         // save it in a variable and wait for completion
         loadFeed(1, function() {
           newFeed = document.getElementsByClassName('feed')[0].innerText;
+          // now check if initialFeed is equal to newFeed
+          expect(initialFeed).not.toEqual(newFeed);
           done();
         });
-        // now check if initialFeed is equal to newFeed
-        expect(initialFeed).not.toEqual(newFeed);
       })
     })
 }());
